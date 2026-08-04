@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Liên hệ - F8</title>
+    <style>
+        /* ===== BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 15px;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ===== PAGE WRAPPER ===== */
+        .page {
+            max-width: 1100px;
+            margin: 48px auto;
+            padding: 0 24px;
+        }
+
+        /* ===== PAGE TITLE ===== */
+        .page-title {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+
+        .page-desc {
+            color: #666;
+            max-width: 600px;
+            margin-bottom: 32px;
+        }
+
+        /* ===== CONTACT INFO ===== */
+        .contact-info {
+            list-style: none;
+            margin-bottom: 24px;
+        }
+
+        .contact-info li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+            color: #444;
+        }
+
+        .contact-info li span.icon {
+            font-size: 18px;
+        }
+
+        .contact-info li a {
+            color: #444;
+            text-decoration: underline !important;
+        }
+
+        .contact-info li a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== LAYOUT: FORM + MAP ===== */
+        .contact-layout {
+            display: flex;
+            gap: 32px;
+            align-items: flex-start;
+        }
+
+        /* ===== FORM ===== */
+        .contact-form {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            font-weight: 600;
+            font-size: 14px;
+            color: #222;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+            color: #333;
+            background: #fff;
+            outline: none;
+            transition: border-color 0.2s;
+        }
+
+        input[type="text"]:focus,
+        input[type="email"]:focus,
+        input[type="tel"]:focus,
+        textarea:focus {
+            border-color: #e84118;
+        }
+
+        input::placeholder,
+        textarea::placeholder {
+            color: #bbb;
+        }
+
+        textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        /* ===== SUBMIT BUTTON ===== */
+        .btn-submit {
+            display: block;
+            width: 180px;
+            margin: 8px auto 0;
+            padding: 13px 0;
+            background: #e84118;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            border: none;
+            border-radius: 24px;
+            cursor: pointer;
+        }
+
+        .btn-submit:hover {
+            background: #c73410;
+        }
+
+        /* ===== MAP ===== */
+        .map-wrapper {
+            flex: 1;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .map-wrapper iframe {
+            display: block;
+            width: 100%;
+            height: 480px;
+            border: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="page">
+
+        <!-- ===== PAGE HEADER ===== -->
+        <h1 class="page-title">Liên hệ</h1>
+        <p class="page-desc">
+            F8 luôn lắng nghe và tiếp nhận mọi ý kiến đóng góp của bạn. Hãy liên hệ với chúng mình bằng cách điền
+            thông tin vào form dưới đây. Chúng mình sẽ phản hồi bạn trong thời gian sớm nhất.
+        </p>
+
+        <!-- ===== CONTACT LAYOUT ===== -->
+        <div class="contact-layout">
+
+            <!-- FORM -->
+            <div class="contact-form">
+
+                <!-- ===== CONTACT INFO ===== -->
+                <ul class="contact-info">
+                    <li>
+                        <span class="icon">🏠</span>
+                        <span>Số 1, ngõ 41, Trần Duy Hưng, Cầu Giấy, Hà Nội</span>
+                    </li>
+                    <li>
+                        <span class="icon">📞</span>
+                        <a href="tel:0819198989">08 1919 8989</a>
+                    </li>
+                    <li>
+                        <span class="icon">✉️</span>
+                        <a href="mailto:contact@f8.edu.vn">contact@f8.edu.vn</a>
+                    </li>
+                </ul>
+
+                <form action="#" method="POST">
+
+                    <div class="form-group">
+                        <label for="fullname">Họ và tên</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Nhập tên đầy đủ..." required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email" placeholder="Nhập email..." required />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Điện thoại</label>
+                        <input type="tel" id="phone" name="phone" placeholder="Nhập số điện thoại..." />
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">Nội dung</label>
+                        <textarea id="message" name="message" placeholder="Nhập nội dung liên hệ..."
+                            required></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-submit">Gửi đi</button>
+
+                </form>
+            </div>
+
+            <!-- MAP -->
+            <div class="map-wrapper">
+                <iframe
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3724.499459902349!2d105.8025744!3d21.012692299999998!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3135ab4df3c6c329%3A0xd8e14fe61fd32604!2zQ8OUTkcgVFkgQ-G7lCBQSOG6pk4gQ8OUTkcgTkdI4buGIEdJw4FPIEThu6RDIEY4!5e0!3m2!1svi!2smy!4v1785843762478!5m2!1svi!2smy"
+                    width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="strict-origin-when-cross-origin"></iframe>
+            </div>
+
+        </div>
+    </div>
+</body>
+
+</html>
