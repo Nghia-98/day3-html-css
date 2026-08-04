@@ -7,11 +7,433 @@
     <title>ES2025 JavaScript: Patterns và Libraries Hot Nhất Cho Developer Việt 2026</title>
     <meta name="description"
         content="Tháng 6/2025, TC39 chính thức công bố ECMAScript 2025. Tìm hiểu những tính năng thực sự vào spec và cách áp dụng vào dự án thực tế." />
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+            font-size: 16px;
+            line-height: 1.7;
+            color: #333;
+            background: #f0f2f5;
+        }
+
+        a {
+            color: #ff5722;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* ===== HEADER ===== */
+        #main-header {
+            background: #1a1a2e;
+            padding: 0 24px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 3px solid #ff5722;
+        }
+
+        #main-header nav ul {
+            list-style: none;
+            display: flex;
+            gap: 8px;
+        }
+
+        #main-header nav ul li a {
+            color: #ccc;
+            padding: 18px 14px;
+            display: block;
+            font-size: 15px;
+        }
+
+        #main-header nav ul li a:hover {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        #main-header p {
+            padding: 10px 0;
+        }
+
+        #main-header img {
+            border-radius: 8px;
+            display: block;
+        }
+
+        /* ===== HR ===== */
+        hr {
+            border: none;
+            border-top: 1px solid #e0e0e0;
+            margin: 28px 0;
+        }
+
+        /* ===== MAIN LAYOUT ===== */
+        .main {
+            max-width: 1160px;
+            margin: 32px auto;
+            padding: 0 16px;
+        }
+
+        /* ===== ARTICLE ===== */
+        article {
+            flex: 1;
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            padding: 36px 40px;
+            min-width: 0;
+        }
+
+        article > header h1 {
+            font-size: 28px;
+            font-weight: 700;
+            color: #1a1a2e;
+            line-height: 1.35;
+            margin-bottom: 20px;
+        }
+
+        /* ===== AUTHOR SECTION ===== */
+        article > header section figure {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-bottom: 10px;
+        }
+
+        article > header section figure img {
+            border-radius: 50%;
+            border: 2px solid #ff5722;
+        }
+
+        article > header section figure figcaption strong a {
+            color: #1a1a2e;
+            font-size: 15px;
+        }
+
+        article > header section figure figcaption p {
+            font-size: 13px;
+            color: #777;
+            margin-top: 4px;
+        }
+
+        article > header section > p {
+            font-size: 13px;
+            color: #888;
+            margin-bottom: 10px;
+        }
+
+        /* Tags */
+        article > header section > p:last-child a,
+        article > footer p a {
+            display: inline-block;
+            background: #fff3e0;
+            color: #ff5722;
+            border: 1px solid #ffccaa;
+            border-radius: 20px;
+            padding: 2px 10px;
+            font-size: 12px;
+            margin: 2px;
+        }
+
+        article > header section > p:last-child a:hover,
+        article > footer p a:hover {
+            background: #ff5722;
+            color: #fff;
+            text-decoration: none;
+        }
+
+        /* ===== ARTICLE SECTIONS ===== */
+        section h2 {
+            font-size: 22px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 16px;
+        }
+
+        section h3 {
+            font-size: 18px;
+            font-weight: 600;
+            color: #333;
+            margin: 20px 0 12px;
+        }
+
+        section p {
+            margin-bottom: 14px;
+            color: #444;
+        }
+
+        section ul,
+        section ol {
+            padding-left: 24px;
+            margin-bottom: 14px;
+        }
+
+        section ul li,
+        section ol li {
+            margin-bottom: 6px;
+            color: #444;
+        }
+
+        /* ===== CODE BLOCKS ===== */
+        pre {
+            background: #1e1e2e;
+            border-radius: 10px;
+            border: 1px solid #333;
+            padding: 20px 24px;
+            overflow-x: auto;
+            margin: 16px 0;
+        }
+
+        pre code {
+            color: #cdd6f4;
+            font-family: "Fira Code", "Cascadia Code", Consolas, monospace;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        code {
+            background: #f3f4f6;
+            color: #d63031;
+            border-radius: 4px;
+            padding: 1px 6px;
+            font-size: 14px;
+            font-family: "Fira Code", Consolas, monospace;
+        }
+
+        pre code {
+            background: none;
+            color: #cdd6f4;
+            padding: 0;
+        }
+
+        /* ===== FIGURE / IMAGE ===== */
+        figure {
+            margin: 20px 0;
+            text-align: center;
+        }
+
+        figure img {
+            max-width: 100%;
+            border-radius: 10px;
+            border: 1px solid #e0e0e0;
+        }
+
+        figure figcaption {
+            margin-top: 8px;
+            font-size: 13px;
+            color: #888;
+            font-style: italic;
+        }
+
+        /* ===== TABLE ===== */
+        .table-container {
+            overflow-x: auto;
+        }
+        
+        .table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 16px 0;
+            font-size: 14px;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid #e0e0e0;
+        }
+
+        .table caption {
+            font-weight: 600;
+            color: #555;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        .table thead tr {
+            background: #1a1a2e;
+            color: #fff;
+        }
+
+        .table thead th {
+            padding: 12px 16px;
+            text-align: left;
+            font-weight: 600;
+        }
+
+        .table tbody tr:nth-child(odd) {
+            background: #f9f9fb;
+        }
+
+        tbody tr:nth-child(even) {
+            background: #fff;
+        }
+
+        tbody td {
+            padding: 11px 16px;
+            color: #444;
+            border-bottom: 1px solid #eee;
+        }
+
+        /* ===== MARK ===== */
+        mark {
+            background: #fff3cd;
+            color: #333;
+            border-radius: 3px;
+            padding: 1px 4px;
+        }
+
+        /* ===== ASIDE ===== */
+        aside {
+            width: 280px;
+            flex-shrink: 0;
+            margin-right: auto;
+            margin-left: auto;
+            margin-top: 32px;
+        }
+
+        aside section {
+            background: #fff;
+            border-radius: 12px;
+            border: 1px solid #e0e0e0;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        aside section h3 {
+            font-size: 15px;
+            font-weight: 700;
+            color: #1a1a2e;
+            margin-bottom: 14px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #ff5722;
+        }
+
+        aside section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        aside section ul li {
+            margin-bottom: 10px;
+        }
+
+        aside section ul li a {
+            font-size: 14px;
+            color: #444;
+            line-height: 1.5;
+        }
+
+        aside section ul li a:hover {
+            color: #ff5722;
+        }
+
+        aside hr {
+            display: none;
+        }
+
+        /* ===== FOOTER ===== */
+        body > footer {
+            background: #1a1a2e;
+            color: #aaa;
+            padding: 40px 24px 24px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 32px;
+            justify-content: center;
+        }
+
+        body > footer section {
+            min-width: 180px;
+        }
+
+        body > footer section h4 {
+            color: #fff;
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: 0.05em;
+            margin-bottom: 14px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid #333;
+        }
+
+        body > footer section ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        body > footer section ul li {
+            margin-bottom: 8px;
+        }
+
+        body > footer section ul li a {
+            color: #aaa;
+            font-size: 13px;
+        }
+
+        body > footer section ul li a:hover {
+            color: #ff5722;
+            text-decoration: none;
+        }
+
+        body > footer address {
+            font-style: normal;
+        }
+
+        body > footer address p {
+            font-size: 13px;
+            margin-bottom: 6px;
+            color: #aaa;
+        }
+
+        body > footer address p a {
+            color: #ccc;
+        }
+
+        body > footer > p {
+            width: 100%;
+            text-align: center;
+            color: #666;
+            font-size: 13px;
+            border-top: 1px solid #2a2a40;
+            padding-top: 20px;
+            margin-top: 8px;
+        }
+
+        /* ===== ARTICLE FOOTER TAGS ===== */
+        article > footer {
+            margin-top: 8px;
+        }
+
+        /* ===== HR inside main content ===== */
+        body > hr {
+            margin: 0;
+            border-color: #1a1a2e;
+        }
+
+        @media screen and (min-width: 768px) { 
+            .main {
+                display: flex;
+                gap: 32px;
+                align-items: flex-start;
+            }
+
+            aside {
+                margin-top: 0;
+            }
+         }
+    </style>
 </head>
 
 <body>
     <!-- ==================== HEADER ==================== -->
-    <header>
+    <header id="main-header">
       <nav aria-label="Điều hướng chính">
         <ul>
           <li><a href="https://f8.edu.vn/">Trang chủ</a></li>
@@ -35,7 +457,7 @@
     <hr />
 
     <!-- ==================== MAIN LAYOUT ==================== -->
-    <main>
+    <main class="main">
         <!-- ========== ARTICLE ========== -->
         <article>
             <!-- Article Header -->
@@ -347,7 +769,8 @@ function ChatApp() {
 
                 <h3>Bảng so sánh thực tế</h3>
 
-                <table border="1">
+                <div class="table-container">
+                    <table class="table">
                     <caption>So sánh RxJS và Zustand</caption>
                     <thead>
                         <tr>
@@ -384,6 +807,7 @@ function ChatApp() {
                         </tr>
                     </tbody>
                 </table>
+                </div>
 
                 <p>
                     Cho hầu hết React app Việt Nam (dashboard, e-commerce, admin panel) &mdash;
